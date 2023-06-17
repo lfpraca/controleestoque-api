@@ -1,0 +1,30 @@
+# GetProdutos
+GET http://localhost:5213/produto
+
+#
+# CreateProduto
+POST http://localhost:5213/produto
+Content-Type: application/json
+
+{
+"descricao": "álcool",
+"UM": "lt",
+"estoqueInicial": 150
+}
+#
+:id = 9
+#
+# GetProduto
+GET http://localhost:5213/produto/:id
+
+#
+# UpdateProduto
+PATCH http://localhost:5213/produto/:id
+Content-Type: application/json
+
+{
+"descricao": "etanol"
+}
+#
+# DeleteProduto
+DELETE http://localhost:5213/produto/:id

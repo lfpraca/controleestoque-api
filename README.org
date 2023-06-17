@@ -1,0 +1,6 @@
+* Como utilizar (homologação)
+- Configure o arquivo appsettings.json com base no arquivo sampleappsettings.json, preenchendo nos placeholders as informações do banco de dados postgre que será utilizado
+- Crie um banco de dados concedendo ao usuário especificado no appsettings.json todas as permissões para esse banco
+  
+- Builde a solution na raiz do diretório
+- Rode o projeto keevotec usando dotnet run e especificando o projeto keevotec, as tabelas do banco de dados serão criadas automaticamente nesse momento

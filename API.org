@@ -1,0 +1,127 @@
+* Produto
+** Get Produto (id)
+GET /produto/{id}
+
+Retorna detalhes do produto com o id especificado
+
+Nenhum campo de requisição
+*** Campos Retorno
+- Id (int)
+- Descrição (string)
+- UM (string)
+** Get Produtos
+GET /produto
+
+Retorna todos os produtos que se encaixam nos filtros especificados
+
+Nenhum campo de requisição
+*** Campos retorno (lista)
+- Id (int)
+- Descrição (string)
+- UM (string)
+** Create Produto
+POST /produto
+
+Cria um novo produto
+*** Campos requisição
+- Descrição (string)
+- UM (string)
+- Estoque inicial (double)
+*** Campos Retorno
+- Id (int)
+- Descrição (string)
+- UM (string)
+** Update Produto
+PATCH /produto/{id}
+
+Atualiza um produto existente
+
+Nenhum campo de retorno
+*** Campos requisição
+- Descrição (string?)
+- UM (string?)
+** Delete Produto
+DELETE /produto/{id}
+
+Remove um produto existente
+
+Nenhum campo de requisição ou retorno
+* Movimento
+** Get Movimento (id)
+GET /movimento/{id}
+
+Retorna detalhes do movimento com o id especificado
+
+Nenhum campo de requisição
+
+*** Campos Retorno
+- Id produto (int)
+- Nome produto (string)
+- Ajuste (double)
+- Atual (double)
+- UM (string)
+- Descrição (string)
+- Sequência (int)
+- Data Lançamento (DateTime)
+** Get Movimentos
+GET /movimento
+
+Retorna todos os movimentos que se encaixam nos filtros especificados
+
+*** Campos Requisição
+- Id produto (int?)
+- Data início (DateTime?)
+- Data fim (DateTime?)
+
+*** Campos Retorno (lista)
+- Id produto (int)
+- Nome produto (string)
+- Ajuste (double)
+- Atual (double)
+- UM (string)
+- Descrição (string)
+- Sequência (int)
+- Data Lançamento (DateTime)
+** Create Movimento
+POST /produto
+
+Cria um novo movimento
+
+Nenhum campo de retorno
+
+*** Campos Requisição
+- IdProduto (int)
+- Ajuste (double)
+- Descrição do Lançamento (string)
+- Data Lançamento (DateTime)
+
+*** Lógica  
+- Achar a sequência máxima com data de lançamento antes do criado
+- Empurrar sequência de todos os registros mais recentes que o criado
+- Recalcular o saldo atual de todos os registros mais recentes
+** Update Movimento
+PATCH /produto/{id}
+
+Atualiza um movimento existente
+
+Nenhum campo de retorno
+*** Campos Requisição
+- Ajuste (double?)
+- Descrição (string?)
+- Data Lançamento (DateTime?)
+
+*** Lógica
+**** Se mudar ajuste
+- Calcula diferença
+- Aplica diferença para os registros da frente
+**** Se mudar data
+- Recalcula atual para todos os registros entre a data nova e antiga (- para mais nova, + para mais antiga)
+** Delete Movimento
+DELETE /produto/{id}
+
+Remove um movimento existente
+
+Nenhum campo de requisição ou retorno
+
+*** Lógica
+- Recalcular o saldo atual de todos os registros mais recentes

@@ -1,0 +1,37 @@
+# GetMovimentos
+GET http://localhost:5213/movimento
+Content-Type: application/json
+
+{
+"ProdutoId": 9
+}
+#
+# CreateMovimento
+POST http://localhost:5213/movimento
+Content-Type: application/json
+
+{
+"ProdutoId": 9,
+"Ajuste": -50,
+"Descricao": "Abastecimento",
+"DataLancamento": "2023-06-16T23:45:00Z"
+}
+
+#
+:id = 34
+#
+# GetMovimento
+GET http://localhost:5213/movimento/:id
+
+#
+# UpdateMovimento
+PATCH http://localhost:5213/movimento/:id
+Content-Type: application/json
+
+{
+"Ajuste": 15.555,
+"DataLancamento": "2023-06-16T23:25:00Z"
+}
+#
+# DeleteMovimento
+DELETE http://localhost:5213/movimento/:id

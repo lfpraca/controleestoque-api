@@ -1,0 +1,13 @@
+{
+    "ConnectionStrings": {
+	"keevotecConnection": "Server=[host];Port=[port];Database=[database];User Id=[user];Password=[password];"
+    },
+    "Logging": {
+	"LogLevel": {
+	    "Default": "Information",
+	    "Microsoft.AspNetCore": "Warning"
+	}
+    },
+    "AllowedHosts": "*",
+    "Urls": "http://localhost:5213"
+}
