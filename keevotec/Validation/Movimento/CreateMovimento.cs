@@ -11,5 +11,10 @@ public class ValidationCreateMovimento
 	{
 	    throw new ValidationException("A descrição não pode ser maior que 40 caracteres.");
 	}
+
+	if (request.DataLancamento.Kind != DateTimeKind.Utc)
+	{
+	    throw new ValidationException("Campos de data/hora precisam ser UTC.");
+	}
     }
 }
