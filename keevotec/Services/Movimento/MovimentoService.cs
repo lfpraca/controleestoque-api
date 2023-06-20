@@ -128,12 +128,12 @@ public class MovimentoService : IMovimentoService
 
         if (request.DataInicio != null)
         {
-            query = query.Where(m => m.DataHora >= request.DataInicio.GetValueOrDefault().Date);
+            query = query.Where(m => m.DataHora >= request.DataInicio.GetValueOrDefault().Date.AddHours(3));
         }
 
         if (request.DataFim != null)
         {
-            query = query.Where(m => m.DataHora < request.DataFim.GetValueOrDefault().Date.AddDays(1));
+            query = query.Where(m => m.DataHora < request.DataFim.GetValueOrDefault().Date.AddDays(1).AddHours(3));
         }
 
         var movimentos = await query
