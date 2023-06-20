@@ -32,7 +32,7 @@ public class MovimentoController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetMovimentos(GetMovimentosRequest request)
+    public async Task<IActionResult> GetMovimentos([FromQuery] GetMovimentosRequest request)
     {
 	var response = await _movimentoService.GetMovimentos(request);
 

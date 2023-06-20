@@ -131,7 +131,7 @@ public class MovimentoService : IMovimentoService
             query = query.Where(m => m.DataHora >= request.DataInicio.GetValueOrDefault().Date);
         }
 
-        if (request.DataInicio != null)
+        if (request.DataFim != null)
         {
             query = query.Where(m => m.DataHora < request.DataFim.GetValueOrDefault().Date.AddDays(1));
         }

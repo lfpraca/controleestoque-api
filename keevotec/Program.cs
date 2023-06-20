@@ -11,6 +11,16 @@ builder.Services.AddScoped<IMovimentoService, MovimentoService>();
 builder.Services.AddDbContext<KeevotecContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("keevotecConnection")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyHeader()
+            .AllowAnyMethod()
+            .WithOrigins("http://localhost:5173");
+    });
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -20,5 +30,8 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.UseMiddleware<ExceptionHandlerMiddleware>();
+
+app.UseCors();
+
 app.MapControllers();
 app.Run();

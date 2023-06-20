@@ -1,10 +1,9 @@
 # GetMovimentos
 GET http://localhost:5213/movimento
-Content-Type: application/json
 
-{
-"ProdutoId": 9
-}
+#
+GET http://localhost:5213/movimento?DataInicio=2023-06-01T12:00:00Z
+
 #
 # CreateMovimento
 POST http://localhost:5213/movimento
