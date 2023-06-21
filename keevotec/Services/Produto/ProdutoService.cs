@@ -27,13 +27,15 @@ public class ProdutoService : IProdutoService
 	};
         _dbContext.Add(produto);
 	await _dbContext.SaveChangesAsync();
-
-	_ = await _movimentoService.CreateMovimento(
-	    new CreateMovimentoRequest(
-		ProdutoId: produto.Id,
-		Ajuste: request.EstoqueInicial,
-		Descricao: "Estoque Inicial",
-		DataLancamento: DateTime.UtcNow));
+	
+	if (request.EstoqueInicial != 0) {
+	    _ = await _movimentoService.CreateMovimento(
+		new CreateMovimentoRequest(
+		    ProdutoId: produto.Id,
+		    Ajuste: request.EstoqueInicial,
+		    Descricao: "Estoque Inicial",
+		    DataLancamento: DateTime.UtcNow));
+	}
 
 	return new ProdutoResponse(produto.Id, produto.Descricao, produto.UM);
     }
